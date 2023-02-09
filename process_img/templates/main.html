@@ -1,0 +1,64 @@
+<!doctype html>
+
+<style>
+    body {
+        background-color: rgb(106, 150, 155);
+    }
+    
+    h1 {
+        text-align: center;
+    }
+    
+    h2,
+    h3 {
+        text-align: center;
+    }
+    
+    div {
+        justify-content: center;
+        text-align: center;
+    }
+    
+    li {
+        text-align: justify;
+        padding-left: 45%;
+    }
+    
+    form {
+        text-align: center;
+    }
+    
+    img {
+        width: 400px;
+        height: 400px;
+        object-fit: cover;
+    }
+</style>
+
+<title>Get tags for images</title>
+<h1>Get tags for images</h1>
+<h2>Select a file to upload</h2>
+
+{% if filename %}
+<div>
+    <img src="{{ url_for('static',filename = '/Images/'+filename) }}">
+</div>
+{% endif %} {% if tags %}
+<h3>Here are some hashtags for the picture</h3> {%for tag in tags%}
+<div>
+    <li>{{tag}}</li>
+</div>
+{%endfor%} {% endif %}
+<div>
+    <form method="post" action="/home" enctype="multipart/form-data">
+        <p>
+            <input type="file" name="file" autocomplete="off" required>
+        </p>
+        <p>
+            <input type="submit" value="Submit">
+        </p>
+    </form>
+</div>
+</body>
+
+</html>
